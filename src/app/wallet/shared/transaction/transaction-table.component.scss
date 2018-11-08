@@ -1,0 +1,133 @@
+@import '../shared';
+
+mat-table {
+  background: transparent;
+
+  mat-header-row {
+    border: none;
+    min-height: 40px;
+  }
+
+  mat-row {
+    margin-bottom: 15px;
+    margin-top: 15px;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  mat-cell {
+    color: $color-dark-grey;
+    font-size: 14px;
+    overflow: hidden;
+  }
+
+  .transaction-row {
+    transition: background-color 0.5s ease;
+
+    &:hover {
+      cursor: pointer;
+      background-color: rgba(0, 0, 0, 0.1) !important;
+    }
+  }
+
+  .confirm-none {
+    color: $color-progress;
+  }
+
+  .confirm-ok {
+    color: $color-secondary;
+  }
+
+  .confirm-error {
+    color: $color-alert;
+  }
+
+  .multi-line {
+    margin-top: 5px;
+  }
+
+  .month {
+    text-transform: uppercase;
+  }
+
+  .day {
+    letter-spacing: 2.3px;
+  }
+
+  .amount {
+    font-weight: 600;
+  }
+
+  .status {
+    color: $color-grey;
+    display: flex;
+    align-items: center;
+  }
+
+  .type {
+
+    > div {
+      display: flex;
+
+      > img {
+        width: 25px;
+        margin-right: 20px;
+      }
+    }
+  }
+
+  .address {
+
+    > span {
+      font-weight: 600;
+    }
+  }
+
+  .date {
+    color: $color-grey;
+    
+    .recent-date {
+      width: 60%;
+      text-align: center;
+      display: block !important;
+    }
+  }
+}
+
+.mat-column-Type {
+  flex: 0 0 20%;
+}
+
+.mat-column-Amount {
+  flex: 0 0 13%;
+}
+
+.mat-column-Address {
+  flex: 0 0 37%;
+}
+
+.mat-column-Status {
+  flex: 0 0 15%;
+}
+
+.mat-column-Date {
+  flex: 0 0 15%;
+}
+
+.mat-column-type {
+  flex: 0 0 36%;
+}
+
+.mat-column-amount {
+  flex: 0 0 22%;
+}
+
+.mat-column-status {
+  flex: 0 0 22%;
+}
+
+.mat-column-date {
+  flex: 0 0 20%;
+}

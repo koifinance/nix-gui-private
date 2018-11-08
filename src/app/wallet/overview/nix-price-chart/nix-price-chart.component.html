@@ -1,0 +1,118 @@
+<mat-drawer-container fullscreen class="nix-price-body">
+  <mat-drawer-content class="content">
+    <div fxLayout="row">
+      <div class="back-button" fxFlex="15">
+        <img src="./assets/icons/SVG/arrow-left-md.svg" alt="Go back" (click)="goToMain()">
+        <div class="backbtn-name">Overview</div>
+      </div>
+      <div fxFlex="85">
+        <div class="header" fxLayout="row">
+
+          <div fxFlex="50" fxFlexOrder="1">
+            <h5 class="reward-title">NIX price chart</h5>
+          </div>
+
+          <div class="actions" fxFlex="50" fxLayoutAlign="end center" fxFlexOrder="2">
+            <mat-form-field class="price-filter">
+              <mat-select [(ngModel)]="chart_currency" [formControl]="panelColor" (change)="onCurrencyChange()">
+                <mat-option value="usd">USD</mat-option>
+                <mat-option value="eur">EUR</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <div class="price-box" fxLayout="row" fxLayoutGap="7%">
+              <!-- <div>1H</div>
+              <div>1D</div> -->
+              <div (click)="setDuration(7)">1W</div>
+              <div (click)="setDuration(31)">1M</div>
+              <div (click)="setDuration(365)">1Y</div>
+              <div (click)="setDuration(7000)">ALL</div>
+            </div>
+
+            <!-- <img class="cursor-pointer" src="./assets/icons/SVG/sync.svg" alt="Sync" class="refresh-img">
+            <img class="cursor-pointer" src="./assets/icons/SVG/help.svg" alt="Help" class="help-img" (click)="navbar.toggle()"> -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="empty-space2"></div>
+    <div fxLayout="row">
+      <div fxFlex="15"></div>
+
+      <div fxFlex="75">
+        <div fxLayout="row" fxLayoutGap="20px">
+          <div fxFlex="15">
+            <span class="large-no" *ngIf="chart_currency == 'usd'">{{bitcoinprice.USD.price | currency:"USD":'symbol'}}</span>
+            <span class="large-no" *ngIf="chart_currency == 'eur'">{{bitcoinprice.EUR.price | currency:"EUR":'symbol'}}</span>
+          </div>
+          <div fxFlex="15">
+            <div fxLayout="column" class="up-value">
+              <span class="fa-caretup-icon" [ngClass]="{'plus-percent': isPlusPercent, 'minus-percent': !isPlusPercent}">
+                <fa-icon [icon]="faCaretDown" *ngIf="!isPlusPercent"></fa-icon>
+                <fa-icon [icon]="faCaretUp" *ngIf="isPlusPercent"></fa-icon>
+              </span>
+
+              <span class="feilds-value1" [ngClass]="{'plus-percent': isPlusPercent, 'minus-percent': !isPlusPercent}" *ngIf="chart_currency == 'usd'">
+                {{bitcoinprice.USD.percent_change_24h}}%
+              </span>
+              <span class="feilds-value1" [ngClass]="{'plus-percent': isPlusPercent, 'minus-percent': !isPlusPercent}" *ngIf="chart_currency == 'eur'">
+                {{bitcoinprice.EUR.percent_change_24h}}%
+              </span>
+            </div>
+          </div>
+          <div fxFlex="15">
+            <div fxLayout="column" fxLayoutGap="2px">
+              <span class="chart-feilds">MARKET CAP</span>
+              <span class="feilds-value" *ngIf="chart_currency == 'usd'">{{bitcoinprice.USD.market_cap | currency:"USD":'symbol'}}</span>
+              <span class="feilds-value" *ngIf="chart_currency == 'eur'">{{bitcoinprice.EUR.market_cap | currency:"EUR":'symbol'}}</span>
+            </div>
+          </div>
+          <div fxFlex="15">
+            <div fxLayout="column" fxLayoutGap="2px">
+              <span class="chart-feilds">LOW - HIGH (24H)</span>
+              <span class="feilds-value" *ngIf="chart_currency == 'usd'">
+                {{marketData.low_24h | currency:"USD":'symbol'}} - {{marketData.high_24h | currency:"USD":'symbol'}}
+              </span>
+              <span class="feilds-value" *ngIf="chart_currency == 'eur'">
+                {{marketData.low_24h | currency:"EUR":'symbol'}} - {{marketData.high_24h | currency:"EUR":'symbol'}}
+              </span>
+            </div>
+          </div>
+          <div fxFlex="15">
+            <div fxLayout="column" fxLayoutGap="2px">
+              <span class="chart-feilds">VOL (24H)</span>
+              <span class="feilds-value" *ngIf="chart_currency == 'usd'">
+                {{bitcoinprice.USD.volume_24h | currency:"USD":'symbol'}}
+              </span>
+              <span class="feilds-value" *ngIf="chart_currency == 'eur'">
+                {{bitcoinprice.EUR.volume_24h | currency:"EUR":'symbol'}}
+              </span>
+            </div>
+          </div>
+          <div fxFlex="15">
+            <div fxLayout="column" fxLayoutGap="2px">
+              <span class="chart-feilds">CIRCULATING SUPPLY</span>
+              <span class="feilds-value">
+                {{ marketData.circulating_supply | number}}
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="empty-space2"></div>
+    <div fxLayout="row">
+      <div fxFlex="15"></div>
+      <div fxFlex="75" class="chart-box">
+        <!-- <p>Chart</p> -->
+        <div class="row">
+            <div style="display: block;">
+              <canvas baseChart style="width: 500px; height: 107px;" [datasets]="lineChartData" [labels]="lineChartLabels" [options]="lineChartOptions"
+                [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="lineChartType" (chartHover)="chartHovered($event)"
+                (chartClick)="chartClicked($event)"></canvas>
+            </div>
+          </div>
+      </div>
+    </div>
+  </mat-drawer-content>
+</mat-drawer-container>

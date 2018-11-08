@@ -1,0 +1,39 @@
+* {
+  font-family: "Nunito", sans-serif;
+  font-weight: 600;
+  color: black;
+}
+
+
+.mat-table .mat-header-row {
+    background: #f1f1f1;
+}
+.matHeader{
+    /*margin-right: 150px;*/
+  }
+  .matCell{
+    /*padding-right: 125px;*/
+  }
+  .matCell1{
+    /*padding-right: 95px;*/
+    cursor: pointer;
+  }
+.confirm-ok {
+    color: orange;
+  }
+
+.mat-column-Name {
+  flex: 0 0 25%;
+}
+
+.mat-column-Status {
+  flex: 0 0 45%;
+}
+
+.mat-column-Detail {
+  flex: 0 0 15%;
+}
+
+.mat-column-Start {
+  flex: 0 0 15%;
+}

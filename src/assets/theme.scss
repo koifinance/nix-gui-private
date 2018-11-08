@@ -1,0 +1,575 @@
+@import 'theme/nix-theme';
+@import './src/assets/config'; // import shared colors etc.
+
+$alert-50-opacity: rgba($color-alert, .5);
+$white-50-opacity: rgba($color-white, .5);
+$white-90-opacity: rgba($color-white, .9);
+$black-51-opacity: rgba(0, 0, 0, .507);
+$color-pink: #ff69b4;
+$color-blue: #108eff;
+
+/* ------------------------------- *\
+    UI Elements
+\* ------------------------------- */
+
+// ------ HELP DESCRIPTION ------ //
+
+.widget-help {
+  @extend %disable-select;
+  color: $text-muted;
+  cursor: help;
+  font-size: 11px;
+  margin-bottom: 25px;
+}
+
+// ------ ADDRESSES ------ //
+
+.address, .address-label {
+  background: transparent;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: background .3s;
+  white-space: nowrap;
+}
+
+// ------ BUTTONS ------ //
+
+button, .mat-button, .mat-raised-button {
+  .mat-icon {
+    height: auto;
+    margin-right: 5px;
+    position: relative;
+    top: -1px;
+    width: auto;
+  }
+
+  &.small { // smaller buttons
+    font-size: 12px;
+    line-height: 29px;
+    min-width: auto;
+    padding: 0 12px;
+  }
+}
+
+.actions {
+  button {
+    margin: 0 10px;
+  }
+}
+
+// ------ SELECT BOX FIX ------ //
+
+.mat-select-panel {
+  background: $color-white;
+}
+
+.underlining-select {
+  border-bottom: .2px $black-51-opacity;
+  line-height: 1.6em;
+}
+
+// ------ PROGRESS BARS ------ //
+
+.mat-progress-bar {
+  // sidebar/sync: dark buffer background for progress bar
+  &.dark-buffer {
+    .mat-progress-bar-buffer {
+      background: lighten($bg-black, 15%);
+    }
+  }
+}
+
+// ------ CARDS ------ //
+
+mat-card {
+  .mat-card { // FIXME: remove the !important and solve overwriting
+    box-shadow: 0 1px 0 $bg-shadow !important;
+    font-family: $font;
+  }
+}
+
+// ------ TABS ------ //
+
+.mat-tab-group {
+  .mat-tab-label {
+    &.mat-tab-label-active { // keep active tabs black (not grey)
+      opacity: 1;
+
+      .mat-icon {
+        opacity: .9;
+      }
+    }
+
+    .mat-icon {
+      @extend %tfx;
+      font-size: 14px;
+      margin-right: 8px;
+      opacity: .5;
+      position: relative;
+      top: .02em;
+    }
+  }
+}
+
+// ------ EXPANSION PANELS ------ //
+
+.mat-expansion-panel {
+  .mat-expansion-panel-header {
+    &:hover {
+      background: inherit !important; // disable darker bg on hover by default
+    }
+  }
+
+  // sidebar/menu: no padding for panel's content (used in the sidebar)
+  &.no-padding {
+    .mat-expansion-panel-body {
+      padding: 0;
+    }
+  }
+
+  // sidebar/menu: color panel's arrow
+  &.arrow-colored {
+    .mat-expansion-indicator {
+      &::after {
+        @extend %tfx;
+        color: $text-muted;
+      }
+    }
+
+    // when expanded..
+    &.mat-expanded {
+      //background: darken($bg-black, 2%); // darken "submenu" background to more visually separate from the rest
+      .mat-expansion-indicator {
+        &::after {
+          color: $color;
+        }
+      }
+    }
+  }
+}
+
+
+// ------ NO RESULTS (no TXs, no addresses, ..) ------ //
+
+.no-results {
+  @extend %disable-select;
+  background: $white-50-opacity;
+  border: 2px dashed $bg-shadow;
+  color: darken($bg-shadow, 15%);
+  font-size: 18px;
+  padding: 170px 0;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+/* ------------------------------- *\
+    Typography
+\* ------------------------------- */
+
+// ------ Page subtitles ------ //
+
+.mat-list {
+  &.list-data {
+    .mat-subheader { // "H2" subtitles in pages (e.g. "(un)used addresses" in Receive
+      @extend %subtitle;
+      height: auto;
+      margin: 10px 0 25px !important;
+
+      &.first {
+        margin-top: -10px !important;
+      }
+    }
+  }
+
+  // sidebar/menu: smaller vertical padding of child lists
+  &.sidebar-item-group {
+    .mat-list-item {
+      height: 42px;
+
+      .mat-list-item-content {
+        padding: 0 10px;
+      }
+    }
+  }
+
+  &.sidebar-bottom-items {
+    .mat-list-item {
+      height: 42px;
+
+      .mat-list-item-content {
+        padding: 0 10px;
+      }
+    }
+  }
+}
+
+.icon-input { // input with icon (eg. Search in Address Book)
+  input {
+    &.mat-input-element {
+      height: 20px;
+    }
+  }
+
+  .mat-icon {
+    cursor: pointer;
+    font-size: 21px;
+    height: auto;
+    position: absolute;
+    right: 0;
+    top: 2px;
+    width: auto;
+  }
+
+  .mat-form-field-underline {
+    background-color: $bg-shadow;
+  }
+}
+
+.list-data {
+  .mat-list-item {
+    font-size: 14px;
+    line-height: 22px;
+    word-wrap: break-word;
+  }
+
+  .mat-subheader {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .mat-divider {
+    margin: 15px 0;
+  }
+}
+
+/* ------------------------------- *\
+    Forms
+\* ------------------------------- */
+
+// ------ INPUTS ------ //
+
+.mat-form-field {
+  font-family: $font;
+  line-height: normal;
+
+  &.larger { // larger inputs
+    font-size: 14px;
+  }
+
+  &.no-top-padding { // remove top space reserved for floating placeholders (if disabled)
+    .mat-input-infix {
+      border-top: 0;
+    }
+  }
+}
+
+input {
+  &[type='text'] {
+    border: 0;
+  }
+
+  // visual verification
+  &.verify-success {
+    color: darken($color-success, 7%) !important;
+  }
+
+  &.verify-error {
+    color: darken($color-alert, 5%);
+  }
+}
+
+// ------ RADIOS ------ //
+
+.mat-list-radio {
+  .mat-radio-button {
+    margin-bottom: 12px;
+  }
+
+  h5 {
+    margin-top: 0;
+  }
+}
+
+.mat-radio-group {
+  // send: full-width clickable radios
+  &.block-radio {
+    .mat-radio-button {
+      .mat-radio-label {
+        width: 100%;
+      }
+    }
+  }
+}
+
+/* ------------------------------- *\
+    Scrollbars
+\* ------------------------------- */
+
+/* pseudo elements
+::-webkit-scrollbar              {}
+::-webkit-scrollbar-button       {}
+::-webkit-scrollbar-track        {}
+::-webkit-scrollbar-track-piece  {}
+::-webkit-scrollbar-thumb        {}
+::-webkit-scrollbar-corner       {}
+::-webkit-resizer                {}
+*/
+
+::-webkit-scrollbar-track {
+  background-color: $bg-shadow;
+  border-radius: 15px;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  &:vertical {
+    background-color: darken($bg-shadow, 20%);
+    //border-radius: 15px;
+    width: 6px;
+  }
+}
+
+.mat-drawer-container {
+  background: $bg;
+}
+
+// scroll on by default, so the content doesn't jump on larger pages
+.mat-drawer-content {
+  // overflow-y: scroll !important;
+}
+
+/* ------------------------------- *\
+    Dialogs
+\* ------------------------------- */
+
+.cdk-overlay-backdrop-showing + .cdk-global-overlay-wrapper {
+  .cdk-overlay-pane {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    max-width: 100% !important;
+    position: absolute !important;
+    width: 100%;
+  }
+}
+
+.cdk-overlay-container {
+  .cdk-overlay-backdrop-showing + .cdk-global-overlay-wrapper {
+    .mat-dialog-container {
+      position: fixed !important;
+    }
+  }
+
+  .small-dialog {
+    .mat-dialog-container {
+      height: auto;
+      width: 600px;
+      border-radius: 5px;
+    }
+  }
+
+  .xsmall-dialog {
+    .mat-dialog-container {
+      height: 580px;
+      width: 450px;
+      border-radius: 5px;
+      overflow: hidden;
+    }
+}
+
+  .mat-dialog-container {
+    height: auto;
+    margin: 24px auto auto;
+    max-width: 800px;
+    position: relative;
+    padding: 0;
+    background-color: #f7f7f7;
+    // Dialogs (small)
+    .dialog-content {
+      margin: 15px -24px;
+    }
+
+    .mat-dialog-content {
+      margin: 0;
+      padding: 0;
+      max-height: none;
+    }
+
+    [mat-dialog-title] { // dialog title
+      font-family: $font;
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 15px;
+      padding-right: 50px;
+
+      &.text-center {
+        padding: 0;
+      }
+    }
+
+    .small-close-button {
+      background: transparent;
+      border: 0;
+      color: $text-muted;
+      cursor: pointer;
+      min-width: 50px;
+      outline: none;
+      padding: 0;
+      position: absolute;
+      right: 10px; // align with modal's content padding
+      top: 22px;
+      z-index: 10;
+
+      .mat-icon {
+        border-radius: 50%;
+        color: $alert-50-opacity;
+        font-size: 22px;
+        line-height: 1.4;
+        margin: 0;
+      }
+
+      &:hover {
+        .mat-icon {
+          color: $color-alert;
+        }
+      }
+    }
+
+    .close-button {
+      background: transparent;
+      color: $text-muted;
+      cursor: pointer;
+      min-width: 50px;
+      outline: none;
+      padding: 25px 38px;
+      position: absolute;
+      right: 0;
+      top: 0;
+      z-index: 10;
+
+      .mat-icon {
+        border-radius: 50%;
+        color: $alert-50-opacity;
+        font-size: 24px;
+        line-height: 1.4;
+        margin: 0;
+      }
+
+      &:hover {
+        .mat-icon {
+          color: $color-alert;
+        }
+      }
+    }
+
+    .mat-wallet-content {
+      .mat-progress-spinner { // loading spinners
+        background: $white-90-opacity;
+        border-radius: 50%;
+        box-shadow: 0 0 70px $color-silver;
+        height: 100px;
+        left: calc((100% - 100px) / 2);
+        padding: 0 !important;
+        position: absolute;
+        top: calc((100% - 100px) / 2);
+        width: 100px;
+        z-index: 10;
+
+        svg {
+          height: 70px !important;
+          transform-origin: 50px 35px;
+          width: 70px !important;
+        }
+      }
+    }
+  }
+}
+
+/* ------------------------------- *\
+    Pagination
+\* ------------------------------- */
+
+.mat-paginator {
+  align-items: center;
+  border-bottom: 1px solid $bg-shadow;
+  display: flex;
+  font-family: $font;
+  justify-content: flex-end;
+  margin-top: 40px;
+  min-height: 56px;
+  padding: 0 8px;
+
+  .mat-icon-button {
+    &:hover {
+      background-color: $color;
+      border-radius: $radius;
+
+      .mat-paginator-increment, .mat-paginator-decrement {
+        border-color: $color-white;
+      }
+    }
+
+    &[disabled] {
+      .mat-paginator-increment, .mat-paginator-decrement {
+        border-color: $bg-shadow;
+      }
+
+      &:hover {
+        background-color: transparent;
+      }
+    }
+  }
+}
+
+/* ------------------------------- *\
+    Helper classes
+\* ------------------------------- */
+
+.to-do {
+  box-shadow: 0 0 3px 1px $color-pink;
+}
+
+// ------ LAYOUT ------ //
+
+.container-x {
+  width: 100%;
+}
+
+.container-block { // main container for content
+  padding: 35px;
+}
+
+// ------ TEXT/FONTS ------ //
+
+.text-center {
+  text-align: center;
+}
+
+.capitalize {
+  text-transform: capitalize;
+}
+
+// ------ QR-Code ------ //
+
+.qr-code {
+  img {
+    display: inline !important;
+  }
+}
+
+// ------ Form Custom ------ //
+.mat-form-field-underline {
+  display: none;
+  height: 0;
+}
+
+.mat-form-field-wrapper {
+  padding-bottom: 0.5em;
+}
+
+.mat-form-field-appearance-legacy .mat-form-field-wrapper {
+  padding-bottom: 0.5em;
+}

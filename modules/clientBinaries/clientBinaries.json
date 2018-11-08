@@ -1,0 +1,95 @@
+{
+  "clients": {
+    "nixd": {
+      "version": "2.1.0.0",
+      "platforms": {
+        "linux": {
+          "x64": {
+            "download": {
+              "url": "https://github.com/NixPlatform/NixCore/releases/download/v2.1.0/nix-2.1.0-x86_64-linux-gnu.tar.gz",
+              "type": "tar",
+              "sha256": "",
+              "bin": "nix-2.1.0/bin/nixd"
+            },
+            "bin": "nixd",
+            "commands": {
+              "sanity": {
+                "args": [
+                  "-version"
+                ],
+                "output": [
+                  "NIX Core Daemon",
+                  "2.1.0.0"
+                ]
+              }
+            }
+          }
+        },
+        "mac": {
+          "x64": {
+            "download": {
+              "url": "https://github.com/NixPlatform/NixCore/releases/download/v2.1.0/nix-2.1.0-osx64.tar.gz",
+              "type": "tar",
+              "sha256": "",
+              "bin": "nix-2.1.0/bin/nixd"
+            },
+            "bin": "nixd",
+            "commands": {
+              "sanity": {
+                "args": [
+                  "-version"
+                ],
+                "output": [
+                  "NIX Core Daemon",
+                  "2.1.0.0"
+                ]
+              }
+            }
+          }
+        },
+        "win": {
+          "ia32": {
+            "download": {
+              "url": "https://github.com/NixPlatform/NixCore/releases/download/v2.1.0/nix-2.1.0-win32.zip",
+              "type": "zip",
+              "sha256": "",
+              "bin": "nix-2.1.0/bin/nixd.exe"
+            },
+            "bin": "nixd.exe",
+            "commands": {
+              "sanity": {
+                "args": [
+                  "-version"
+                ],
+                "output": [
+                  "NIX Core Daemon",
+                  "2.1.0.0"
+                ]
+              }
+            }
+          },
+          "x64": {
+            "download": {
+              "url": "https://github.com/NixPlatform/NixCore/releases/download/v2.1.0/nix-2.1.0-win64.zip",
+              "type": "zip",
+              "sha256": "",
+              "bin": "nix-2.1.0/bin/nixd.exe"
+            },
+            "bin": "nixd.exe",
+            "commands": {
+              "sanity": {
+                "args": [
+                  "-version"
+                ],
+                "output": [
+                  "NIX Core Daemon",
+                  "2.1.0.0"
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

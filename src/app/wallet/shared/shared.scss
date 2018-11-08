@@ -1,0 +1,41 @@
+@import './src/assets/config'; // import shared colors etc.
+/*
+  Values shared among widgets
+*/
+
+.header-nav { // overview section titles
+  @extend %subtitle;
+  list-style-type: none;
+}
+
+/*
+  Shared among widgets
+*/
+
+span {
+  .point {
+    color: $color;
+  }
+}
+
+mat-card {
+  .multiple {
+    margin-bottom: 20px;
+  }
+}
+
+.complete-status {
+  width: 9px;
+  height: 9px;
+  border: 1px solid rgb(14, 203, 193);
+  border-radius: 50% 50%;
+  background-color: rgb(14, 203, 193);
+}
+
+.processing-status {
+  width: 9px;
+  height: 9px;
+  border: 1px solid rgb(253, 225, 103);
+  border-radius: 50% 50%;
+  background-color: rgb(253, 225, 103);
+}

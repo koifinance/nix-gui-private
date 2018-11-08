@@ -1,0 +1,44 @@
+<div class="viewNode">
+  <div class="modalcontent">
+    <h5 fxFlex="50">{{ghostnode.alias}}</h5>
+    <div _ngcontent-c7="" class="divider"></div>
+
+    <mat-form-field>
+      <input matInput placeholder="VPS public IP address" [(ngModel)]="ghostnode.address" readonly >
+    </mat-form-field>
+
+    <div _ngcontent-c7="" class="divider"></div>
+
+    <mat-form-field>
+      <input matInput placeholder="Last seen" [(ngModel)]="ghostnode.lastSeenDate" readonly >
+    </mat-form-field>
+
+    <div _ngcontent-c7="" class="divider"></div>
+
+    <mat-form-field>
+      <input matInput placeholder="Address for node reward payments" [(ngModel)]="ghostnode.paymentAddress" readonly >
+    </mat-form-field>
+
+
+    <div _ngcontent-c7="" class="divider"></div>
+
+    <mat-form-field>
+      <input matInput placeholder="Node key" [(ngModel)]="ghostnode.privateKey" readonly >
+      <button class="copybtn" ngxClipboard [cbContent]="ghostnode.privateKey" (click)="copy()">Copy</button>
+    </mat-form-field>
+
+    <div _ngcontent-c7="" class="divider"></div>
+
+    <mat-form-field>
+      <input type="tel" matInput placeholder="Protocol"  [(ngModel)]="ghostnode.protocolVersion" readonly >
+    </mat-form-field>
+
+    <div _ngcontent-c7="" class="divider"></div>
+
+    <div class="send buttons" fxLayout="row" fxLayoutAlign="center center">
+      <!-- <button class="modal-cancel-button" fxFlex="40" mat-raised-button (click)="close()">Cancel</button> -->
+      <button class="modal-ok-button" fxFlex="40" mat-raised-button (click)="close()">OK</button>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,99 @@
+.cancel-node {
+
+    .divider[_ngcontent-c7] {
+      border-top: 1px solid #EAEAEA;
+      margin-bottom: 15px;
+      margin-top: 15px;
+    }
+  
+    h5 {
+      display: inline;
+      color: #000000;
+      font-family: "Nunito", sans-serif;
+    }
+  
+    .modalcontent {
+      padding: 24px;
+    }
+  
+    .modaldetails {
+      padding: 24px;
+      background-color: #E0E3E7;
+    }
+  
+    .fright {
+      float: right;
+    }
+  
+    .fleft {
+      float: left;
+  
+    }
+  
+    .transdetail {
+      margin-bottom: 15px;
+      font-size: 12px;
+    }
+  
+    .transtotal {
+      color: #000000;
+      font-weight: bold;
+      font-size: 15px;
+      margin-bottom: 10px;
+  
+    }
+  
+    .send {
+      padding: 40px 24px;
+    }
+
+    .modalinput {
+      font-size: 15px;
+      padding-left: 12px;
+      height: 40px;
+      border: 1px solid #979797;
+      margin-bottom: 5px;
+    }
+  
+    .amountsend {
+      margin-bottom: 20px;
+    }
+  
+    .lbltotal {
+      font-size: 15px;
+    } 
+
+    .modallabel {
+      font-size: 12px;
+    }
+  
+    .nixlabel {
+      font-size: 14px;
+    }
+  }
+  
+  .cancel-warning{
+    background-color: #ffc107ba;
+    padding: 15px;
+  }
+  .cancelNode-dropdown{
+    background-color: #ffffff;
+    border-radius: 4px;
+    border: 1px solid #00000029;
+    padding-left: 15px;
+    padding-right: 10px;
+    font-size: 13px;
+    
+    ::ng-deep.mat-select-arrow {
+      border-left: 8px solid transparent !important;
+        border-right: 8px solid transparent !important;
+        border-top: 11px solid !important;
+        // padding-top:0 !important ;    
+    }
+  }
+  .mat-select-arrow {    
+    border-left: 8px solid transparent !important;
+    border-right: 8px solid transparent !important;
+    border-top: 11px solid !important;    
+}
+

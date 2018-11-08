@@ -1,0 +1,51 @@
+<mat-table [dataSource]="ghostNodes">
+    <ng-container matColumnDef="Name">
+        <mat-header-cell *matHeaderCellDef class="matHeader">Name</mat-header-cell>
+        <mat-cell *matCellDef="let element" class="matCell">{{element.alias}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="Status">
+        <mat-header-cell *matHeaderCellDef class="matHeader">Status</mat-header-cell>
+        <mat-cell *matCellDef="let element" class="matCell">
+            <fa-icon [icon]="faCircleSolid" class="confirm-ok"></fa-icon>
+            {{element.status}}
+        </mat-cell>
+    </ng-container>
+    <!-- <ng-container matColumnDef="Active for">
+        <mat-header-cell *matHeaderCellDef class="matHeader">Active</mat-header-cell>
+        <mat-cell *matCellDef="let element" class="matCell">
+            {{element.activefor}}
+        </mat-cell>
+    </ng-container> -->
+    <ng-container matColumnDef="Detail">
+        <mat-header-cell *matHeaderCellDef class="matHeader">Ghostnode Info</mat-header-cell>
+        <mat-cell *matCellDef="let element" class="matCell1" (click)="openDetail(element)">
+            <fa-icon [icon]="faFileAlt"></fa-icon>
+            {{element.action1}}
+        </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="Start">
+        <mat-header-cell *matHeaderCellDef class="matHeader">Start Ghostnode</mat-header-cell>
+        <mat-cell *matCellDef="let element" class="matCell1" (click)="startNode(element)">
+            <fa-icon [icon]="faCaretSquareRight"></fa-icon>
+            
+        </mat-cell>
+    </ng-container>
+<!--     <ng-container matColumnDef="Action2">
+        <mat-header-cell *matHeaderCellDef class="matHeader"></mat-header-cell>
+        <mat-cell *matCellDef="let element" class="matCell1"  (click)="openEdit()">
+            <fa-icon [icon]="faEdit"></fa-icon>
+            {{element.action2}}
+        </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="Action3" >
+        <mat-header-cell *matHeaderCellDef class="matHeader"></mat-header-cell>
+        <mat-cell *matCellDef="let element" class="matCell1" (click)="openCancel()">
+            <fa-icon [icon]="faTimes"></fa-icon>
+            {{element.action3}}
+        </mat-cell>
+    </ng-container> -->
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+
+</mat-table>

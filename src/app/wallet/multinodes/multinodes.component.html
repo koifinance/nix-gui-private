@@ -1,0 +1,44 @@
+<mat-drawer-container>
+  <mat-drawer #help position="end" mode="over" disableClose="true" class="sidebar">
+    <help-bar [navbar]="help" [faq]="faq"></help-bar>
+  </mat-drawer>
+
+  <mat-drawer-content>
+    <page-header heading="GhostNode" [navbar]="help"></page-header>
+    <div class="ghostnode">
+    <p class="desc">
+      A Ghostnode is the term used for NIX masternodes, which help secure the network by completing special tasks on the
+      <br>blockchain and ensuring quick transactions. Node holders earn NIX for providing this service. 
+      <a href="https://nixplatform.zendesk.com/hc/en-us/articles/360005044571-Setting-up-your-Ghost-Node" target="_blank">Learn more</a>
+    </p>
+
+
+    <div class="balance-row" fxLayout.gt-md="row" fxLayout.lt-md="row" fxLayoutAlign="center start" fxLayoutGap="3%" fxFlexOrder.lt-md="3">
+      <mat-card fxFlexOrder.lt-md="1" fxFlex="50">
+        <p class="description">Overall balance</p>
+        <span class="number big">{{ ghostNodeBalance }}</span>
+        <span class="medium"> NIX</span>
+        <div class="divider"></div>
+        <span class="number small" *ngIf="currentCurrency == 'USD'">{{BTCghostnodebalance | number: '.4'}} BTC ({{USDghostnodebalance | currency : 'USD' : 'symbol'}})</span>
+        <span class="number small" *ngIf="currentCurrency == 'EUR'">{{BTCghostnodebalance | number: '.4'}} BTC ({{EURghostnodebalance | currency : 'EUR' : 'symbol'}})</span>
+      </mat-card>
+
+
+      <mat-card fxFlexOrder.lt-md="1" fxFlex="50" class="balance-card" (click)="showAllGhostnodes()">
+        <!-- <div class="balance"> -->
+        <p class="description">Total Ghostnodes</p>
+        <span class="number big">{{ ghostNodeCount }}</span>
+        <span class="medium"> ACTIVE NODES</span>
+        <div class="divider"></div>
+        <span class="number small">
+        ROI: {{roi}}%</span>
+      </mat-card>
+    </div>
+
+    <h5 class="tableHead">My Ghostnodes</h5>
+    <div class="">
+      <app-ghost-node [ghostNodes]="ghostNodes"></app-ghost-node>
+    </div>
+    </div>
+  </mat-drawer-content>
+</mat-drawer-container>
